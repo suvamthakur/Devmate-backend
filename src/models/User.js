@@ -81,7 +81,7 @@ const userSchema = new mongoose.Schema(
 // JWT sign
 userSchema.methods.getJWT = async function () {
   // this refers to the intance (document) of this model
-  const token = await jwt.sign({ _id: this._id }, "secretKey@devTinder", {
+  const token = await jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 

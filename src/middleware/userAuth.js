@@ -8,7 +8,7 @@ const userAuth = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid token" });
     }
 
-    const data = await jwt.verify(token, "secretKey@devTinder");
+    const data = await jwt.verify(token, process.env.JWT_SECRET);
     const { _id } = data;
 
     const user = await User.findById(_id);
